@@ -110,7 +110,7 @@ var userName = getMyUsername.bind(myUser)(); //Fix this
 //Above you're given an object and a function. What will the getUsername function return?
 //Note(no tests)
   //Answer Here
-//
+//undefined
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
   //Answer Here
