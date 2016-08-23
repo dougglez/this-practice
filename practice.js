@@ -2,19 +2,27 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
+// to avoid repititve statements, and allow the return to be able to change values based on object being referenced
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
+      // this gets bound at invocation, not declaration
+      // this is bound to the object of the method that calls it
+      //
 
   // 3) What is the difference between call and apply?
 
       //Answer
+//with call, you can pass in the parameters with commas
+// attack.call(player1, 5, 1);
+// attack.apply(player2, [10, 2]);
 
   // 4) What does .bind do?
 
       //Answer
-
+// .bind forces 'this' to stay focused on a certain object
+// var attack2 = attack.bind(player1, 5, 1);
+// attack2 // returns 5 > 1 > "Firing Laser"
 
 //Next Problem
 
