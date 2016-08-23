@@ -6,9 +6,7 @@
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
-      // this gets bound at invocation, not declaration
-      // this is bound to the object of the method that calls it
-      //
+      /* Explicit, Implicit, Default, New */
 
   // 3) What is the difference between call and apply?
 
@@ -20,7 +18,7 @@
   // 4) What does .bind do?
 
       //Answer
-// .bind forces 'this' to stay focused on a certain object
+// .bind forces 'this' to stay focused on a specified object
 // var attack2 = attack.bind(player1, 5, 1);
 // attack2 // returns 5 > 1 > "Firing Laser"
 
@@ -32,16 +30,44 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
+// var getUsername = function() {
+//   return this.username;
+// };
+// var ObjConst = function (username, email, getUserName) {
+//   this.username = username;
+//   this.email = email;
+//   this.getUsername = getUsername();
+// };
 
+var user = {
+  username: 'dougglez',
+  email: 'jndfg@jn.com',
+  getUsername: function() {
+    return this.username;
+  }
+};
+
+// var user = new ObjConst ('dougglez', 'dougglez@gmail.com', getUsername());
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
-
+user.getUsername();
 
 //Next Problem
 
 
 // Write the function definitions which will make the following function invocations function properly.
-
-  //Function Invocations Here
+var Car = function (make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.moveCar = function () {
+    this.move = 0;
+    return this.move += 10;
+  };
+};
+// NewCar.prototype.test = function () {
+//   return this.make;
+// };
+//Function Invocations Here
 
 var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
@@ -63,6 +89,8 @@ var getYear = function(){
 
 //Note(no tests)
   //Code Here
+var priusYear = getYear.call(prius);
+var mustangYear = getYear.call(mustang);
 
 
 //New Problem
@@ -77,14 +105,16 @@ var getMyUsername = function() {
  return this.username;
 };
 
-var userName = getMyUsername(); //Fix this
+var userName = getMyUsername.bind(myUser)(); //Fix this
 
-//Above you're given an object, a function, and a setTimeout invocation. After 5 seconds, what will the getUsername function return?
+//Above you're given an object and a function. What will the getUsername function return?
 //Note(no tests)
   //Answer Here
-
+//
 //In the example above, what is the 'this keyword' bound to when getUsername runs?
 
   //Answer Here
+// the root, or the window using default binding
+
 
 //Fix the getMyUsername invocation so that userName will be equal to 'iliketurtles'.
